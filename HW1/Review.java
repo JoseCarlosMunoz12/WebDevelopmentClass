@@ -34,4 +34,6 @@ public class Review{
 		return this.Stars;
 	}
 	public int getUID(){
+		return this.UID;
+	}
 }
