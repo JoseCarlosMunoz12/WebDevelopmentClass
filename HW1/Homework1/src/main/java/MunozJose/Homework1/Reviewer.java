@@ -11,6 +11,7 @@ package MunozJose.Homework1;
 public class Reviewer {
     private int UID;
     private String Name;
+    private String Bio;
 
     public int getUID() {
         return UID;
@@ -35,5 +36,4 @@ public class Reviewer {
     public void setBio(String Bio) {
         this.Bio = Bio;
     }
-    private String Bio;
 }
