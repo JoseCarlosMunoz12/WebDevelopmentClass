@@ -23,9 +23,10 @@ public class ReviewsController{
                 "Has a youtube Channel for film speculation",
                 "Writer for the Chicago Times"
             };
-            String [] titles = {"Not as good as before", 
-            "A Masterpiece to see", "For a first director, it was done well",
-            "While story was good, visuals need improvement"};
+            //Movie titles
+            String [] movies = {"JAWS","Jurassic Park", "John Wick",
+            "Legal Blonde", "Drag Me to Hell",  "Excorcist"};
+            //reviews of Movies
             String [] bodies = {"Not as good as before", 
             "A Masterpiece to see", "For a first director, it was done well",
             "While story was good, visuals need improvement"};
@@ -45,7 +46,7 @@ public class ReviewsController{
                 Review review = new Review();                
                 double stars = ((int) random.nextDouble() * 50) / 10.0;
                 Reviewer user = Critics.get(random.nextInt(Critics.size()));
-                String title = titles[random.nextInt(titles.length)];
+                String title = movies[random.nextInt(movies.length)];
                 String body = bodies[random.nextInt(bodies.length)];                
                 review.setTitle(title);
                 review.setBody(body);
@@ -77,4 +78,17 @@ public class ReviewsController{
             }
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
+        
+        @GetMapping("/review/{title}")
+        public ResponseEntity<ArrayList<Review>> getMovieReview(@PathVariable("title") String title){
+            ArrayList<Review> reviews = new ArrayList();
+            for ( Review r : Reviews){
+                if (r.getTitle().equals(title))
+                    reviews.add(r);
+            }
+            if(reviews.isEmpty())
+                return new ResponseEntity(reviews, HttpStatus.NOT_FOUND);
+            return new ResponseEntity(reviews, HttpStatus.FOUND);
+        }
+        
 }
