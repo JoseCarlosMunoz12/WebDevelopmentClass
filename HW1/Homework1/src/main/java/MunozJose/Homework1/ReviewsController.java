@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,15 +58,14 @@ public class ReviewsController{
             }
 	}
         
+        
+        ////
+        ///--Review Functions
+        ///
         @GetMapping("/reviews")
         public ArrayList<Review> getReviews()
         {   
             return Reviews;
-        }
-        
-        @GetMapping("/reviewers")
-        public ArrayList<Reviewer> getReviewers(){
-            return Critics;
         }
         
         @GetMapping("/review{rid}")
@@ -89,6 +89,37 @@ public class ReviewsController{
             if(reviews.isEmpty())
                 return new ResponseEntity(reviews, HttpStatus.NOT_FOUND);
             return new ResponseEntity(reviews, HttpStatus.FOUND);
+        }
+        
+        @GetMapping("/review/Score{rating}")
+        public ResponseEntity<ArrayList<Review>> getMovieMoreThanRating(@PathVariable("rating") double rating){
+            ArrayList<Review> reviews = new ArrayList();
+            for ( Review r : Reviews){
+                if (r.getStars() > rating)
+                    reviews.add(r);
+            }
+            if(reviews.isEmpty())
+                return new ResponseEntity(reviews, HttpStatus.NOT_FOUND);
+            return new ResponseEntity(reviews, HttpStatus.FOUND);
+        }
+        
+        @DeleteMapping("/review/{rid}")
+        public ResponseEntity<Review> deleteReview(@PathVariable("rid") int rid){
+            Review fake = new Review();
+            fake.setRID(rid);
+            if(Reviews.contains(fake)){
+                Review real = Reviews.get(Reviews.indexOf(fake));
+                Reviews.remove(real);
+                return new ResponseEntity(real, HttpStatus.OK);
+            }
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
+        ////
+        ///-- Reviewes Functions
+        ////
+        @GetMapping("/reviewers")
+        public ArrayList<Reviewer> getReviewers(){
+            return Critics;
         }
         
 }

@@ -4,13 +4,21 @@
  */
 package MunozJose.Homework1;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 /**
  *
  * @author jose
  */
 public class Reviewer {
+    @Min(value = 10000, message = "SID must be a 5 digit value")
+    @Max(value = 99999, message = "SID must be a 5 digit value")
     private int UID;
+    @NotBlank(message = "Major cannot be blank")
     private String Name;
+    @NotBlank(message = "Major cannot be blank")
     private String Bio;
 
     public int getUID() {

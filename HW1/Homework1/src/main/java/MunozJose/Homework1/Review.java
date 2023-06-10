@@ -1,6 +1,14 @@
 package MunozJose.Homework1;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
+/**
+ *
+ * @author jose
+ */
 
 public class Review{
 
@@ -65,9 +73,17 @@ public class Review{
     public void setUID(int UID) {
         this.UID = UID;
     }
-	private int RID;
-	private String Title;
-	private String Body;
-	private double Stars;
-	private int UID;
+    
+    @Min(value = 100, message = "SID must be a 5 digit value")
+    @Max(value = 999, message = "SID must be a 5 digit value")
+    private int RID;
+    @NotBlank(message = "Major cannot be blank")
+    private String Title;
+    @NotBlank(message = "Major cannot be blank")
+    private String Body;
+    @Range(min=0, max=5, message="Range Must be Between 0.0 and 5.0")
+    private double Stars;
+    @Min(value = 10000, message = "SID must be a 5 digit value")
+    @Max(value = 99999, message = "SID must be a 5 digit value")
+    private int UID;
 }
