@@ -2,7 +2,6 @@ package MunozJose.Homework1;
 
 import jakarta.validation.Valid;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+/**
+ *
+ * @author Jose Carlos Munoz
+ */
 
 @RestController
 public class ReviewsController {
@@ -33,12 +37,18 @@ public class ReviewsController {
             "Writer for the Chicago Times"
         };
         //Movie titles
-        String[] movies = {"JAWS", "Jurassic Park", "John Wick",
-            "Legal Blonde", "Drag Me to Hell", "Excorcist"};
+        String[] movies = {"JAWS", "JurassicPark", "JohnWick", "Descent",
+            "Prometheus", "THING", "MEGAN", "EvilDead", "Halloween", "Crawl",
+            "Martian", "Sinister", "ChildsPlay", "TheBlob"};
         //reviews of Movies
         String[] bodies = {"Not as good as before",
             "A Masterpiece to see", "For a first director, it was done well",
-            "While story was good, visuals need improvement"};
+            "While story was good, visuals need improvement",
+            "10/10", "For a first director, it was done well",
+            "Worth the admission","Its a Dud", "Interesting Idea, poor execution",
+            "Visuals are out of this world",
+            "It was okay", "Not bad execution, but leaves some desiring outcomes",
+            "A classic in the making!"};
         //Generate 5 random critics with unique names and bios
         for (int ii = 0; ii < 5; ii++) {
             Reviewer critic = new Reviewer();
@@ -51,9 +61,9 @@ public class ReviewsController {
             Critics.add(critic);
         }
         //Make Random Reviews
-        for (int ii = 0; ii < 25; ii++) {
+        for (int ii = 0; ii < 30; ii++) {
             Review review = new Review();
-            double stars = ((int) random.nextDouble() * 50) / 10.0;
+            double stars = ((int)( random.nextDouble() * 50)) / 10.0;
             Reviewer user = Critics.get(random.nextInt(Critics.size()));
             String title = movies[random.nextInt(movies.length)];
             String body = bodies[random.nextInt(bodies.length)];
@@ -68,9 +78,11 @@ public class ReviewsController {
     //
     //Other Necessary Functions
     //
-
+    
     public boolean isDuplicate(Review review, Review ignore) {
+        //Checks to see if there is a duplicate of the review
         for (Review r : Reviews) {
+            //ignores the review found that will be edited
             if (r.equals(ignore)) {
                 continue;
             }
@@ -82,18 +94,22 @@ public class ReviewsController {
         }
         return false;
     }
+    
     public boolean isDuplicate(Reviewer critic, Reviewer ignore){
+        //Checks to see if there is a duplicate of the reviewer
         for(Reviewer c : Critics){
+            //ignores the reviewer found that will be edited
             if (c.equals(ignore)){
                 continue;
             }
             if(c.getBio().equals(critic.getBio()) &&
-                    c.getName().equals(critic.getName()) &&
-                    c.getUID() == critic.getUID())
+                    c.getName().equals(critic.getName()))
                 return true;
         }
         return false;
+    
     }
+    
     ////
     ///--Review Functions
     ///
@@ -218,7 +234,7 @@ public class ReviewsController {
     
     @PostMapping(value="/reviewers", consumes=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Reviewer> addReviewer(@RequestBody @Valid final Reviewer critic){
-        if(Critics.contains(critic)){
+        if(Critics.contains(critic)){ 
             return new ResponseEntity(critic, HttpStatus.FOUND);
         }
         Critics.add(critic);
@@ -243,9 +259,8 @@ public class ReviewsController {
             return new ResponseEntity(critic, HttpStatus.NOT_FOUND);
         }        
     }
-    
-    
-    @DeleteMapping("/review/{uid}")
+        
+    @DeleteMapping("/reviewer/{uid}")
     public ResponseEntity<Reviewer> deleteReviewer(@PathVariable("uid") int uid) {
         Reviewer fake = new Reviewer();
         fake.setUID(uid);
@@ -256,4 +271,5 @@ public class ReviewsController {
         }
         return new ResponseEntity(null, HttpStatus.NOT_FOUND);
     }
+    
 }

@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Range;
 
 /**
  *
- * @author jose
+ * @author Jose Carlos Munoz
  */
 
 public class Review{
