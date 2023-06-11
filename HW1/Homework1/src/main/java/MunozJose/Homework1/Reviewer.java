@@ -13,13 +13,36 @@ import jakarta.validation.constraints.NotBlank;
  * @author jose
  */
 public class Reviewer {
+
     @Min(value = 10000, message = "SID must be a 5 digit value")
     @Max(value = 99999, message = "SID must be a 5 digit value")
     private int UID;
-    @NotBlank(message = "Major cannot be blank")
+    @NotBlank(message = "Name cannot be blank")
     private String Name;
-    @NotBlank(message = "Major cannot be blank")
+    @NotBlank(message = "Biography cannot be blank")
     private String Bio;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.UID;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reviewer other = (Reviewer) obj;
+        return this.UID == other.UID;
+    }
 
     public int getUID() {
         return UID;
