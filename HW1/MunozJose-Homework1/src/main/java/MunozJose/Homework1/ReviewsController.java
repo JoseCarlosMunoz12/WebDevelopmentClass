@@ -34,7 +34,10 @@ public class ReviewsController {
             "Went to film School in LA. Is establish critic of the NYT",
             "Runs a blog about current movie gossip and news",
             "Has a youtube Channel for film speculation",
-            "Writer for the Chicago Times"
+            "Writer for the Chicago Times",
+            "Retired Director",
+            "BAFTA Critic",
+            "Professir of the Arts",
         };
         //Movie titles
         String[] movies = {"JAWS", "JurassicPark", "JohnWick", "Descent",
@@ -86,6 +89,7 @@ public class ReviewsController {
             if (r.equals(ignore)) {
                 continue;
             }
+            //If a duplicate is found, returns true
             if (r.getBody().equals(review.getBody())
                     && r.getUID() == review.getUID()
                     && r.getTitle().equals(review.getTitle())) {
@@ -102,6 +106,8 @@ public class ReviewsController {
             if (c.equals(ignore)){
                 continue;
             }
+            // If a duplicate is found return a true, else continue with until
+            // a duplicate is found
             if(c.getBio().equals(critic.getBio()) &&
                     c.getName().equals(critic.getName()))
                 return true;
@@ -247,9 +253,6 @@ public class ReviewsController {
             Reviewer real = Critics.get(Critics.indexOf(critic));
             if (this.isDuplicate(critic, real))
                 return new ResponseEntity(critic, HttpStatus.CONFLICT);
-            if (critic.getUID() > 9999 && critic.getUID() < 100000) {
-                real.setUID(critic.getUID());
-            }
             if(critic.getName() != null)
                 real.setName(critic.getName());
             if(critic.getBio() != null)
