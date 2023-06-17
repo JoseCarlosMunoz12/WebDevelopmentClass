@@ -1,0 +1,88 @@
+
+h3,h4,h5{
+    color: purple;
+}
+
+h2{
+    color:olive;
+}
+h1{
+    color:#00FA9A;
+}
+
+body{
+    background-color:darkolivegreen;
+    color:darkred  
+}
+p{
+    background-color: black;
+    padding:12% 6%;
+    color: white;
+    text-align: center;
+}
+a:link,A:visited{
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: sans-serif, Arial, Helevetica;
+    color: purple;
+    text-transform: lowercase;
+    background-color: yellow;
+    padding: 10px 30px 10px 30px;   
+    text-align: center;
+    text-decoration: underline;
+}
+
+a:hover, a:active{
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: sans-serif, Arial, Helevetica;
+    color: yellow;
+    text-transform: lowercase;
+    background-color: purple;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    text-decoration: underline;    
+}
+
+th{
+    border-bottom: 3px double blue;
+}
+
+
+td{
+    border-bottom: 2px dotted red;
+    border-radius: 15px;
+}
+tr:nth-child(even){
+    background-color: green;
+}
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+
+li a:hover {
+    background-color: #111;
+}

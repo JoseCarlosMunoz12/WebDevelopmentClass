@@ -1,0 +1,44 @@
+h3,h4,h5{
+    color: purple;
+}
+
+h2{
+    color:olive;
+}
+h1{
+    color:#00FA9A;
+}
+
+body{
+    background-color:darkolivegreen;
+    color:darkred  
+}
+p{
+    background-color: black;
+    padding:12% 6%;
+    color: white;
+    text-align: center;
+}
+a:link,A:visited{
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: sans-serif, Arial, Helevetica;
+    color: purple;
+    text-transform: lowercase;
+    background-color: yellow;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+a:hover, a:active{
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: sans-serif, Arial, Helevetica;
+    color: yellow;
+    text-transform: lowercase;
+    background-color: purple;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    text-decoration: underline;    
+}
