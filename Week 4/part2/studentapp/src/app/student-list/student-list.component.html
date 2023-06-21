@@ -1,0 +1,18 @@
+<h1>Student Roster</h1>
+
+<table cellPadding="0" cellSpacing="0" border="1">
+    <tr>
+        <th>SID</th>
+        <th>Name</th>
+        <th>Major</th>
+        <th>Hours</th>
+        <th>GPA</th>
+    </tr>
+    <tr *ngFor="let student of roster">    
+        <td><a [routerLink]="['/students/',student.sid]">{{student.sid}}</a></td>        
+        <td>{{student.name}}</td>
+        <td>{{student.major}}</td>
+        <td>{{student.hours}}</td>
+        <td>{{student.gpa}}</td>
+    </tr>
+</table>

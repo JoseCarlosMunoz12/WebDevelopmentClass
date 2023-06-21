@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author josec
  */
+@CrossOrigin(origins= "http://localhost:4200")
 @RestController
 public class StudentController {
 
@@ -41,13 +43,15 @@ public class StudentController {
         for (int ii = 0; ii < 25; ii++) {
             //make student
             Student s = new Student();
-            s.setGPA(random.nextDouble() * 4.0);
+            double temp = (int)(40 * random.nextDouble());
+            s.setGPA(temp / 10);
             String name = lnames[random.nextInt(lnames.length)] + ",";
             name = name + fnames[random.nextInt(fnames.length)];
             String major = majors[random.nextInt(majors.length)];
             s.setMajor(major);
             s.setName(name);
             s.setSID(random.nextInt(89999) + 10000);
+            s.setHours(random.nextInt(120));
             logger.debug(s.toString());
             roster.add(s);
         }
@@ -59,7 +63,7 @@ public class StudentController {
         return roster;
     }
 
-    @GetMapping("/student{sid}")
+    @GetMapping("/students/{sid}")
     public ResponseEntity<Student> getStudent(@PathVariable("sid") int sid) {
         logger.debug("Get Student:" + sid);
         Student fake = new Student();
@@ -123,6 +127,9 @@ public class StudentController {
             }
             if (student.getMajor() != null) {
                 real.setMajor(student.getMajor());
+            }
+            if(student.getHours() >= 0){
+                real.setHours(student.getHours());
             }
             return new ResponseEntity(student, HttpStatus.OK);
         } else {

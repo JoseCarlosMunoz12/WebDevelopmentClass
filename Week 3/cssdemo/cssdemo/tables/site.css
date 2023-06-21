@@ -1,0 +1,30 @@
+h2 {
+    color: red;
+}
+
+h3,
+h4 {
+    color: blue;
+}
+
+h1 {
+    color: darkgreen;
+}
+
+body {
+    background-color: palegreen;
+    color: forestgreen;
+}
+
+th {
+    border-bottom: 5px double darkgreen;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 2px solid darkgreen;
+}
+
+tr:nth-child(even) {
+    background-color: limegreen;
+}

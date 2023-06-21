@@ -1,0 +1,33 @@
+<h1>Student: {{sid}}</h1>
+
+<table cellPadding="0" cellSpacing="0" border="1">
+    <tr>
+        <th>SID</th>
+        <th>{{student.sid}}</th>
+    </tr> 
+    
+    <tr>
+        <th>Name</th>
+        <th>{{student.name}}</th>
+    </tr> 
+    
+    <tr>
+        <th>Major</th>
+        <th>{{student.major}}</th>
+    </tr> 
+    
+    <tr>
+        <th>Hours</th>
+        <th>{{student.hours}}</th>
+    </tr> 
+
+    <tr>
+        <th>GPA</th>
+        <th>{{student.gpa}}</th>
+    </tr>     
+</table>
+
+<p>
+    <a [routerLink]="['/studentlist']">Roster</a>
+</p>
+

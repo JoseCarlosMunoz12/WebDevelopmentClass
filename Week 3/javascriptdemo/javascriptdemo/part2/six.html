@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        
+        <script type="text/javascript">
+            
+            function goLeft() {
+                var tempSrc = document.images["left"].src;
+                document.images["left"].src = document.images["center"].src;
+                document.images["center"].src = document.images["right"].src;
+                document.images["right"].src = tempSrc;
+            }
+            
+            function goRight() {
+                var tempSrc = document.images["right"].src;
+                document.images["right"].src = document.images["center"].src;
+                document.images["center"].src = document.images["left"].src;
+                document.images["left"].src = tempSrc;
+            }
+           
+            function goBack() {
+                document.images["left"].src = "ru1.jpg";
+                document.images["center"].src = "ru2.png";
+                document.images["right"].src = "ru3.jpg";
+            } 
+            
+            </script>
+
+        
+        
+        
+        
+        
+        
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <center><table border="0">
+            <tr>
+                <td><img src="ru1.jpg" onmouseover="goLeft()" id="left" height="100" width="100"></td>
+                <td><img src="ru2.png" id="center" onmouseover="goBack()" height="100" width="100"></td>
+                <td><img src="ru3.jpg" onmouseover="goRight()" id="right" height="100" width="100"></td>
+            </tr>
+            
+        </table></center>
+    </body>
+</html>

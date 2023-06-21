@@ -1,0 +1,46 @@
+h2 {
+    color: red;
+}
+
+h3,
+h4 {
+    color: blue;
+}
+
+h1 {
+    color: darkgreen;
+}
+
+body {
+    background-color: palegreen;
+    color: forestgreen;
+}
+
+p {
+    background-color: black;
+    color: white;
+    padding: 50px;
+    text-align: right;
+}
+
+a:link,
+a:visited {
+    color: purple;
+    background-color: yellow;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+a:hover,
+a:active {
+    color: yellow;
+    background-color: purple;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-variant: small-caps;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        ul.topnav li {
+            float: left;
+        }
+        
+        ul.topnav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+        
+        ul.topnav li a:hover:not(.active) {
+            background-color: #111;
+        }
+        
+        ul.topnav li a.active {
+            background-color: #04AA6D;
+        }
+        
+        ul.topnav li.right {
+            float: right;
+        }
+        
+        i {
+            vertical-align: middle;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .collapsible {
+                display: none;
+            }
+            ul.topnav li.right,
+            ul.topnav li {
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="topnav">
+        <li>
+            <a class="active" href="#home">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td><i class="material-icons">home</i></td>
+                        <td><span class="collapsible">Home</span></td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+        <li>
+            <a href="#news">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td><i class="material-icons">feed</i></td>
+                        <td><span class="collapsible">News</span></td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+        <li>
+            <a href="#contact">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td><i class="material-icons">contact_mail</i></td>
+                        <td><span class="collapsible">Contact</span></td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+        <li class="right">
+            <a href="#about">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td><i class="material-icons">contact_support</i></td>
+                        <td><span class="collapsible">About</span></td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+
+    </ul>
+
+    <div style="padding:0 16px;">
+        <h2>Responsive Topnav Example</h2>
+        <p>This example use media queries to stack the topnav vertically when the screen size is 600px or less.</p>
+        <p>You will learn more about media queries and responsive web design later in our CSS Tutorial.</p>
+        <h4>Resize the browser window to see the effect.</h4>
+    </div>
+
+</body>
+
+</html>

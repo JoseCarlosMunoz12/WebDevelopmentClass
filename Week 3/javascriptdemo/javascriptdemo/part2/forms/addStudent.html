@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>Add a Student</title>
+    <script type="text/javascript">
+        function validateForm() {
+            var error = false;
+            var message = "";
+
+            //sid field
+            var value = document.forms["form1"]["SID"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                message = message + "SID cannot be blank!";
+
+                document.getElementById("sidlabel").style = "color:red";
+                document.getElementById("sidlabel").innerHTML = "SID (" + message + "):";
+                message = message + "\n";
+
+
+
+            } else {
+                if (isNaN(value)) {
+                    //SID is not a number
+                    error = true;
+                    message = message + "SID must be a number!";
+
+                    document.getElementById("sidlabel").style = "color:red";
+                    document.getElementById("sidlabel").innerHTML = "SID (" + message + "):";
+                    message = message + "\n";
+
+
+                } else {
+                    //revert back to original
+                    document.getElementById("sidlabel").style = "";
+                    document.getElementById("sidlabel").innerHTML = "SID:"; //" (" + message + "):";
+                }
+            }
+            //nave field
+            value = document.forms["form1"]["name"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                mymessage = "Name cannot be blank!"
+                message = message + mymessage + "\n";
+
+                document.getElementById("nameLabel").style.color = "red";
+                document.getElementById("nameLabel").innerHTML = "Name (" + mymessage + "):";
+
+
+            } else {
+                document.getElementById("nameLabel").style = "";
+                document.getElementById("nameLabel").innerHTML = "Name:"; //" (" + message + "):";
+            }
+
+
+            //gpa field
+            value = document.forms["form1"]["gpa"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                mymessage = "GPA cannot be blank!";
+                message = message + mymessage + "\n";
+                document.getElementById("gpalabel").style.color = "red";
+                document.getElementById("gpalabel").innerHTML = "GPA (" + mymessage + "):";
+
+
+
+
+            } else {
+
+                if (isNaN(value)) {
+                    //SID is not a number
+                    error = true;
+
+                    mymessage = "GPA must be a number!";
+                    message = message + mymessage + "\n";
+                    document.getElementById("gpalabel").style.color = "red";
+                    document.getElementById("gpalabel").innerHTML = "GPA (" + mymessage + "):";
+
+
+                } else {
+                    if ((value < 0) || (value > 4)) {
+                        //SID is not a number
+                        error = true;
+                        mymessage = "GPA must be in the range 0 to 4!";
+                        message = message + mymessage + "\n";
+
+                        document.getElementById("gpalabel").style.color = "red";
+                        document.getElementById("gpalabel").innerHTML = "GPA (" + mymessage + "):";
+
+
+                    } else {
+                        document.getElementById("gpalabel").style = "";
+                        document.getElementById("gpalabel").innerHTML = "GPA:"; //" (" + message + "):";
+
+                    }
+                }
+
+            }
+
+            //age field
+            value = document.forms["form1"]["age"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                message = message + "Age cannot be blank! \n";
+
+            }
+
+            if (error) {
+                alert(message);
+                return false;
+            } else {
+                return true;
+            }
+
+
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Add a student</h1>
+    <form method="GET" action="addStudent.html" id="form1">
+
+
+        <div id="sidlabel">SID:</div><input type="text" name="SID">
+        <p></p>
+
+        <div id="nameLabel">Name:</div> <input type="text" name="name">
+        <p></p>
+
+        <div id="agelabel"></div>Age:</div> <input type="text" name="age">
+        <p></p>
+
+        Major: <select name="major">
+                <option value="IT">IT</option>
+                <option value="CS" selected>Computer Science</option>
+                <option value="DA">Data Analytics</option>               
+            </select>
+        <p></p>
+
+        <div id="gpalabel"></div>GPA:</div> <input type="text" name="gpa">
+        <p></p>
+
+        <input type="submit" onclick="return validateForm()" value="Add Student">
+        <input type="reset" value="Start Over?">
+        <p></p>
+
+    </form>
+
+    <a href="index.html">Go Home!</a>
+
+
+
+
+</body>
+
+</html>

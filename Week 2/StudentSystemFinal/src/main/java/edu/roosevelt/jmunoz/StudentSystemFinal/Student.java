@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 
@@ -21,13 +22,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "name=" + name + ", SID=" + SID + ", GPA=" + GPA + ", major=" + major + '}';
+        return "Student{" + "name=" + name + ", SID=" + sid + ", GPA=" + gpa + ", major=" + major + ", Hours=" + hours + '}';
     }
+
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.SID;
+        hash = 97 * hash + this.sid;
         return hash;
     }
 
@@ -43,7 +45,7 @@ public class Student {
             return false;
         }
         final Student other = (Student) obj;
-        return this.SID == other.SID;
+        return this.sid == other.sid;
     }
 
     public String getName() {
@@ -55,19 +57,27 @@ public class Student {
     }
 
     public int getSID() {
-        return SID;
+        return sid;
     }
 
     public void setSID(int SID) {
-        this.SID = SID;
+        this.sid = SID;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int Hours) {
+        this.hours = Hours;
     }
 
     public double getGPA() {
-        return GPA;
+        return gpa;
     }
 
     public void setGPA(double GPA) {
-        this.GPA = GPA;
+        this.gpa = GPA;
     }
 
     public String getMajor() {
@@ -82,12 +92,13 @@ public class Student {
     private String name;
     @Min(value = 10000, message = "SID must be a 5 digit value")
     @Max(value = 99999, message = "SID must be a 5 digit value")
-    private int SID;
+    private int sid;
     @Range(min = 0, max=4, message = "Range must be between 4.0 and 0.0")
-    private double GPA;
+    private double gpa;
     @NotBlank(message = "Major cannot be blank")
     @Size(max = 30, message = "Major must be no more thatn 30 characters long")
     private String major;
-    
+    @PositiveOrZero(message="Hours must be equal or greeater than zero")
+    private int hours;
     
 }
