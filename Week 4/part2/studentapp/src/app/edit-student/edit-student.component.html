@@ -1,0 +1,34 @@
+<h1>Edit Student: {{ student.sid }}</h1>
+
+<form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+    <table cellpadding=10 cellspacing=0 border=1>
+
+        <tr>
+            <td>SID:</td>
+            <td><input type="text" [(ngModel)]="student.sid" name="sid" #sid="ngModel"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" [(ngModel)]="student.name" name="name" #name="ngModel"></td>
+        </tr>
+        <tr>
+            <td>Major:</td>
+            <td><input type="text" [(ngModel)]="student.major" name="major" #major="ngModel"></td>
+        </tr>
+        <tr>
+            <td>Hours:</td>
+            <td><input type="text" [(ngModel)]="student.hours" name="hours" #hours="ngModel"></td>
+        </tr>
+        <tr>
+            <td>GPA:</td>
+            <td><input type="text" [(ngModel)]="student.gpa" name="gpa" #gpa="ngModel"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Edit Student"><input type="reset"></td>
+
+        </tr>
+
+
+    </table>
+</form>
+<p><a [routerLink]="['/studentlist']">Roster</a></p>

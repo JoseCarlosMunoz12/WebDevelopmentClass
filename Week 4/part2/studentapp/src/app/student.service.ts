@@ -19,4 +19,13 @@ export class StudentService {
   getStudent(sid:number): Observable<Student>{
     return this.http.get<Student>(this.serverURL + "/" + sid);
   }
+  deleteStudent(sid: number):Observable<Student>{
+    return this.http.delete<Student>(this.serverURL + "/" + sid);
+  }
+  createStudent(student: Student): Observable<Student>{
+    return this.http.post<Student>(this.serverURL, student);
+  }
+  editStudent(student: Student): Observable<Student>{
+    return this.http.put<Student>(this.serverURL, student);
+  }
 }

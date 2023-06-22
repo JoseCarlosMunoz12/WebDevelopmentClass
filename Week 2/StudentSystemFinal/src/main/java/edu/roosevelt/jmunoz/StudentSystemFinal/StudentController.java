@@ -43,8 +43,8 @@ public class StudentController {
         for (int ii = 0; ii < 25; ii++) {
             //make student
             Student s = new Student();
-            double temp = (int)(40 * random.nextDouble());
-            s.setGPA(temp / 10);
+            double temp = (4.0 * random.nextDouble());
+            s.setGPA(temp);
             String name = lnames[random.nextInt(lnames.length)] + ",";
             name = name + fnames[random.nextInt(fnames.length)];
             String major = majors[random.nextInt(majors.length)];
@@ -137,7 +137,7 @@ public class StudentController {
         }
     }
 
-    @DeleteMapping("student/{sid}")
+    @DeleteMapping("students/{sid}")
     public ResponseEntity<Student> deleteStudent(@PathVariable("sid") int sid) {
         Student fake = new Student();
         fake.setSID(sid);

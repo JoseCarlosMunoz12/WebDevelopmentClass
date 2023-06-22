@@ -1,18 +1,33 @@
 <h1>Student Roster</h1>
 
-<table cellPadding="0" cellSpacing="0" border="1">
+<table cellPadding="10" cellSpacing="0" border="1">
     <tr>
-        <th>SID</th>
-        <th>Name</th>
-        <th>Major</th>
-        <th>Hours</th>
-        <th>GPA</th>
+        <th><a (click)="sortBy('sid')">SID</a></th>
+        <th><a (click)="sortBy('name')">Name</a></th>
+        <th><a (click)="sortBy('major')">Major</a></th>
+        <th><a (click)="sortBy('hours')">Hours</a></th>
+        <th><a (click)="sortBy('gpa')">GPA</a></th>
+        <th>Action?</th>
     </tr>
-    <tr *ngFor="let student of roster">    
-        <td><a [routerLink]="['/students/',student.sid]">{{student.sid}}</a></td>        
-        <td>{{student.name}}</td>
-        <td>{{student.major}}</td>
-        <td>{{student.hours}}</td>
-        <td>{{student.gpa}}</td>
+    <tr *ngFor="let student of roster">  
+
+        <td>{{ student.sid }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.major }}</td>
+        <td>{{ student.hours }}</td>
+
+
+
+
+
+
+        <td>{{ student.gpa | number: '1.2-2'}}</td>
+        <td><a [routerLink]="['/editStudent/',student.sid]"><i class="material-icons">edit</i></a>
+            <a (click)="deleteStudent(student.sid)"><i class="material-icons">delete</i></a></td>
     </tr>
 </table>
+
+
+<p>
+    <a [routerLink]="['/addStudent']">Add Student</a>
+</p>

@@ -14,6 +14,10 @@ export class StudentDetailComponent implements OnInit {
 
   studentClass: string = "";
 
+  lowGPA: boolean = false;
+
+  className: string="";
+
   student: Student;
 
   constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
@@ -27,7 +31,20 @@ export class StudentDetailComponent implements OnInit {
       this.studentService.getStudent(this.sid).subscribe(
         data => {
           this.student = data;
-          
+          if(this.student.gpa > 2){
+            this.lowGPA = true;
+          }
+          if(this.student.hours < 30){
+            this.className = "Freshman"
+          } else if(this.student.hours <60){
+            this.className = "Sophomre";
+
+          }else if (this.student.hours < 90){
+            this.className = "Junior";
+          }
+          else{
+            this.className = "Senior";
+          }
         },
         error => {
           if (error.status = '404') {

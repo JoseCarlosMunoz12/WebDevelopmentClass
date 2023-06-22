@@ -1,33 +1,46 @@
 <h1>Student: {{sid}}</h1>
 
-<table cellPadding="0" cellSpacing="0" border="1">
+<table cellPadding="10" cellSpacing="0" border="1">
     <tr>
-        <th>SID</th>
-        <th>{{student.sid}}</th>
+        <td>SID:</td>
+        <td>{{student.sid}}</td>
     </tr> 
     
     <tr>
-        <th>Name</th>
-        <th>{{student.name}}</th>
+        <td>Name:</td>
+        <td>{{student.name}}</td>
     </tr> 
     
     <tr>
-        <th>Major</th>
-        <th>{{student.major}}</th>
+        <td>Major:</td>
+        <td>{{student.major}}</td>
     </tr> 
     
     <tr>
-        <th>Hours</th>
-        <th>{{student.hours}}</th>
+        <td>Hours:</td>
+        <td>{{student.hours}}</td>
+    </tr> 
+    
+    <tr>
+        <td>Class:</td>
+        <td> {{className}}</td>
     </tr> 
 
     <tr>
-        <th>GPA</th>
-        <th>{{student.gpa}}</th>
+        <td>
+            <div *ngIf="this.lowGPA; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                    GPA:
+                </ng-template>
+                <ng-template #elseBlock>
+                    GPA(GPA is low, please see your adivsor):
+                </ng-template>
+
+        </td>
+        <td>{{student.gpa | number: '1.2-2'}}</td>
     </tr>     
 </table>
 
 <p>
     <a [routerLink]="['/studentlist']">Roster</a>
 </p>
-

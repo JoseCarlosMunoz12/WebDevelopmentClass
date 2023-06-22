@@ -4,30 +4,55 @@ import { Student } from '../student';
 import { StudentService } from '../student.service';
 
 @Component({
-  selector: 'app-student-detail',
-  templateUrl: './student-detail.component.html',
-  styleUrls: ['./student-detail.component.css']
+  selector: 'app-edit-student',
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
 })
-export class StudentDetailComponent implements OnInit {
+export class EditStudentComponent implements OnInit {
+
+  student: Student = new Student();
 
   sid: number = -1;
-
-  studentClass: string = "";
-
-  student: Student;
-
+  
   constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
+
+  onSubmit(): void {
+    console.log(this.student);
+
+    this.studentService.editStudent(this.student).subscribe(
+      data => {
+        //don't need to do anything here...
+        //we succesfully added student, so
+        //go back to the lists
+        this.router.navigate(['/studentlist']);
+
+      },
+      error => {
+        
+          console.error("Error!");
+          console.error("ErrorMessage: " + error.message);
+          console.error("ErrorStatus: " + error.status);
+          console.error("ErrorName:" + error.name);
+          console.error(""); 
+        
+      }
+    );
+  }
+  
   ngOnInit(): void {
     //get this sid
     if (this.route.snapshot.paramMap.get('sid') !== null) {
       //set sid to the parsed integer form of 
       this.sid = parseInt(this.route.snapshot.paramMap.get('sid')!);
+
       //get the student
       this.studentService.getStudent(this.sid).subscribe(
         data => {
           this.student = data;
-          
+         
+
+
         },
         error => {
           if (error.status = '404') {
@@ -57,5 +82,4 @@ export class StudentDetailComponent implements OnInit {
 
 
   }
-
 }

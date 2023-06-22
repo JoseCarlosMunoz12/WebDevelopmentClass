@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+h2 {
+    color: red;
+}
+
+h3,
+h4 {
+    color: blue;
+}
+
+h1 {
+    color: darkgreen;
+}
+
+body {
+    background-color: palegreen;
+    color: forestgreen;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: forestgreen;
+}
+
+a:hover,
+a:active {
+    text-decoration: none;
+    color: darkgreen;
+}

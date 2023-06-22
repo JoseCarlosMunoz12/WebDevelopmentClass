@@ -76,6 +76,15 @@ public class ReviewsController {
             review.setStars(stars);
             review.setUID(user.getUID());
             Reviews.add(review);
+            Reviewer fake = new Reviewer();
+            fake.setUID(review.getUID());
+            var critic = Critics.get(Critics.indexOf(fake));
+            System.out.println("<tr>");
+            System.out.println("<th>" + review.getRID() + "</th>");
+            System.out.println("<th>" + review.getTitle() + "</th>");
+            System.out.println("<th>" + review.getStars() + "</th>");
+            System.out.println("<th>" + critic.getName() + "</th>");
+            System.out.println("</tr>");
         }
     }
     //

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="site.css" type="text/css">
+    <title>Add New Review</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>The form method="get" attribute</h1>
+
+<form action="./addReview.html" method="get" target="_blank">
+  <label for="fname">RID:</label>
+  <input type="text" id="rid" name="rid"><br><br>
+  <label for="lname">Movie Title:</label>
+  <input type="text" id="title" name="title"><br><br>
+  <label for="lname">Body:</label>
+  <input type="text" id="body" name="body"><br><br>
+  <label for="lname">Stars:</label>
+  <select id="stars" name="stars">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br><br>
+  <label for="lname">Reviewer:</label>
+  <input type="text" id="reviewer" name="reviewer"><br><br>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<p>Click to submit a review.</p>
+
+</body>
+</html>
