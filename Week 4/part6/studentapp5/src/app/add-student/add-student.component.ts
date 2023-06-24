@@ -11,9 +11,10 @@ import { StudentService } from '../student.service';
 })
 export class AddStudentComponent implements OnInit {
 
+  sidAlreadyExists: boolean = false;
+
   //work with this student
   student: Student = new Student();
-  sidAlreadyExists:boolean = false;
 
   constructor(private studentService: StudentService, private router: Router) { }
 
@@ -29,20 +30,24 @@ export class AddStudentComponent implements OnInit {
         //we succesfully added student, so
         //go back to the lists
         this.router.navigate(['/studentlist']);
-        this.sidAlreadyExists = false;
+
       },
       error => {
-        if(error.status == '302'){
+        if (error.status = '302') {
           this.sidAlreadyExists = true;
+          //reset the sid control
           form.controls['sid'].reset();
-        }else {
-        
+          
+          //form.getControl('sid').markAsPristine;
+        } else {
           console.error("Error!");
           console.error("ErrorMessage: " + error.message);
           console.error("ErrorStatus: " + error.status);
           console.error("ErrorName:" + error.name);
-          console.error("");
-         }
+          console.error(""); 
+        }
+        
+         
         
       }
     );

@@ -22,7 +22,7 @@ export class EditStudentComponent implements OnInit {
   onSubmit(): void {
     console.log(this.student);
 
-    this.studentService.editStudent(this.student).subscribe(
+    this.studentService.updateStudent(this.student).subscribe(
       data => {
         //don't need to do anything here...
         //we succesfully added student, so

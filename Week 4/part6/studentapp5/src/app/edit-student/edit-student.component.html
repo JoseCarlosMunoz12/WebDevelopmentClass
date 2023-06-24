@@ -7,27 +7,31 @@
             <td>SID:
             </td>
             <td><input disabled="yes" type="number" [(ngModel)]="student.sid" required intval minval="10000" maxval="99999" name="sid" #sid="ngModel"></td>
+
+
+
+
         </tr>
         <tr>
-            <td>Name<span *ngIf="(name.invalid && name.errors?.['required']) && (name.dirty || name.touched)"> (Name is required)</span>:
+            <td>Name<span *ngIf="(name.invalid && name.errors?.required) && (name.dirty || name.touched)"> (Name is required)</span>:
                 <td><input type="text" [(ngModel)]="student.name" required name="name" #name="ngModel"></td>
         </tr>
         <tr>
-            <td>Major<span *ngIf="(major.invalid && major.errors?.['required']) && (major.dirty || major.touched)"> (Major is required)</span>:
+            <td>Major<span *ngIf="(major.invalid && major.errors?.required) && (major.dirty || major.touched)"> (Major is required)</span>:
                 <td><input type="text" [(ngModel)]="student.major" required name="major" #major="ngModel"></td>
         </tr>
         <tr>
             <td>Hours
-                <span *ngIf="(hours.invalid && hours.errors?.['required']) && (hours.dirty || hours.touched)"> (Hours is required)</span>
-                <span *ngIf="(hours.invalid && !hours.errors?.['required'] && hours.errors?.['notint']) && (hours.dirty || hours.touched)"> (Hours must be an integer)</span>
-                <span *ngIf="(hours.invalid && !hours.errors?.['notint'] && (hours.errors?.['maxval'] || hours.errors?.['minval'])) && (hours.dirty || hours.touched)"> (Hours must be between 0 and 120)</span>:
+                <span *ngIf="(hours.invalid && hours.errors?.required) && (hours.dirty || hours.touched)"> (Hours is required)</span>
+                <span *ngIf="(hours.invalid && !hours.errors?.required && hours.errors?.notint) && (hours.dirty || hours.touched)"> (Hours must be an integer)</span>
+                <span *ngIf="(hours.invalid && !hours.errors?.notint && (hours.errors?.maxval || hours.errors?.minval)) && (hours.dirty || hours.touched)"> (Hours must be between 0 and 120)</span>:
             </td>
             <td><input type="number" [(ngModel)]="student.hours" required intval minval="0" maxval="120" name="hours" #hours="ngModel"></td>
         </tr>
         <tr>
             <td>GPA
-                <span *ngIf="(gpa.invalid && gpa.errors?.['required']) && (gpa.dirty || gpa.touched)"> (SID is required)</span>
-                <span *ngIf="(gpa.invalid && !gpa.errors?.['required'] && (gpa.errors?.['maxval'] || gpa.errors?.['minval'])) && (gpa.dirty || gpa.touched)"> (GPA must be between 0.0 and 4.0)</span>:
+                <span *ngIf="(gpa.invalid && gpa.errors?.required) && (gpa.dirty || gpa.touched)"> (SID is required)</span>
+                <span *ngIf="(gpa.invalid && !gpa.errors?.required && (gpa.errors?.maxval || gpa.errors?.minval)) && (gpa.dirty || gpa.touched)"> (GPA must be between 0.0 and 4.0)</span>:
             </td>
             <td><input type="number" [(ngModel)]="student.gpa" required name="gpa" minval="0" maxval="4" #gpa="ngModel"></td>
         </tr>

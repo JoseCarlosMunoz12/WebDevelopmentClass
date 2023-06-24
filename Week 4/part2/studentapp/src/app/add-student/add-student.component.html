@@ -1,30 +1,46 @@
 <h1>Add Student</h1>
 
-<form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+<form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
     <table cellpadding=10 cellspacing=0 border=1>
 
         <tr>
-            <td>SID:</td>
-            <td><input type="text" [(ngModel)]="student.sid" name="sid" #sid="ngModel"></td>
+            <td>SID
+                <span *ngIf="(sidAlreadyExists && sid.pristine && sid.untouched)"> (SID is already in use)</span>
+                <span *ngIf="(sid.invalid && sid.errors?.['required']) && (sid.dirty || sid.touched)"> (SID is required)</span>
+                <span *ngIf="(sid.invalid && !sid.errors?.['required'] && sid.errors?.['notint']) && (sid.dirty || sid.touched)"> (SID must be an integer)</span>
+                <span *ngIf="(sid.invalid && !sid.errors?.['required'] && !sid.errors?.['notint'] && (sid.errors?.['maxval'] || sid.errors?.['minval'])) && (sid.dirty || sid.touched)"> (SID must be a 5 digit Integer)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="student.sid" required intval minval="10000" maxval="99999" name="sid" #sid="ngModel"></td>
+
+
+
+
         </tr>
         <tr>
-            <td>Name:</td>
-            <td><input type="text" [(ngModel)]="student.name" name="name" #name="ngModel"></td>
+            <td>Name<span *ngIf="(name.invalid && name.errors?.['required']) && (name.dirty || name.touched)"> (Name is required)</span>:
+                <td><input type="text" [(ngModel)]="student.name" required name="name" #name="ngModel"></td>
         </tr>
         <tr>
-            <td>Major:</td>
-            <td><input type="text" [(ngModel)]="student.major" name="major" #major="ngModel"></td>
+            <td>Major<span *ngIf="(major.invalid && major.errors?.['required']) && (major.dirty || major.touched)"> (Major is required)</span>:
+                <td><input type="text" [(ngModel)]="student.major" required name="major" #major="ngModel"></td>
         </tr>
         <tr>
-            <td>Hours:</td>
-            <td><input type="text" [(ngModel)]="student.hours" name="hours" #hours="ngModel"></td>
+            <td>Hours
+                <span *ngIf="(hours.invalid && hours.errors?.['required']) && (hours.dirty || hours.touched)"> (Hours is required)</span>
+                <span *ngIf="(hours.invalid && !hours.errors?.['required'] && hours.errors?.['notint']) && (hours.dirty || hours.touched)"> (Hours must be an integer)</span>
+                <span *ngIf="(hours.invalid && !hours.errors?.['notint'] && (hours.errors?.['maxval'] || hours.errors?.['minval'])) && (hours.dirty || hours.touched)"> (Hours must be between 0 and 120)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="student.hours" required intval minval="0" maxval="120" name="hours" #hours="ngModel"></td>
         </tr>
         <tr>
-            <td>GPA:</td>
-            <td><input type="text" [(ngModel)]="student.gpa" name="gpa" #gpa="ngModel"></td>
+            <td>GPA
+                <span *ngIf="(gpa.invalid && gpa.errors?.['required']) && (gpa.dirty || gpa.touched)"> (SID is required)</span>
+                <span *ngIf="(gpa.invalid && !gpa.errors?.['required'] && (gpa.errors?.['maxval'] || gpa.errors?.['minval'])) && (gpa.dirty || gpa.touched)"> (GPA must be between 0.0 and 4.0)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="student.gpa" required name="gpa" minval="0" maxval="4" #gpa="ngModel"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Add Student"><input type="reset"></td>
+            <td colspan="2"><input type="submit" value="Add Student" [disabled]="!myform.form.valid"><input type="reset"></td>
 
         </tr>
 

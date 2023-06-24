@@ -159,11 +159,11 @@ public class ReviewsController {
         return new ResponseEntity(reviews, HttpStatus.FOUND);
     }
 
-    @GetMapping("/review/ScoreAbove{rating}")
-    public ResponseEntity<ArrayList<Review>> getMovieMoreThanRating(@PathVariable("rating") double rating) {
+    @GetMapping("/review/Above3Stars")
+    public ResponseEntity<ArrayList<Review>> getMovieMoreThanRating() {
         ArrayList<Review> reviews = new ArrayList();
         for (Review r : Reviews) {
-            if (r.getStars() > rating) {
+            if (r.getStars() > 3) {
                 reviews.add(r);
             }
         }
