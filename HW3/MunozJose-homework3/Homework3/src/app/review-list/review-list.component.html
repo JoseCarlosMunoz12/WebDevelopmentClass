@@ -1,0 +1,26 @@
+<h1>Movie Reviews</h1>
+
+<table cellPadding="10" cellSpacing="0" border="1">
+    <tr>
+        
+        <th><a (click)="sortBy('sid')">RID</a></th>
+        <th><a (click)="sortBy('name')">Title</a></th>
+        <th><a (click)="sortBy('major')">Stars</a></th>
+        <th><a (click)="sortBy('major')">UID</a></th>
+        <th>Action?</th>
+    </tr>
+    <tr *ngFor="let review of reviews">  
+
+        <td>{{ review.rid }}</td>
+        <td>{{ review.title }}</td>
+        <td>{{ review.stars }}</td>
+        <td>{{review.uid}}</td>
+        <td><a ><i class="material-icons">edit</i></a>
+            <a><i class="material-icons">delete</i></a></td>
+    </tr>
+</table>
+
+
+<p>
+    <a>Add Student</a>
+</p>

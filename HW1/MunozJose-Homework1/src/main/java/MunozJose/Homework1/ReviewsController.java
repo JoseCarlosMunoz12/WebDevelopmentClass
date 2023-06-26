@@ -6,6 +6,7 @@ import java.util.Random;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Jose Carlos Munoz
  */
-
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class ReviewsController {
 
@@ -79,12 +80,6 @@ public class ReviewsController {
             Reviewer fake = new Reviewer();
             fake.setUID(review.getUID());
             var critic = Critics.get(Critics.indexOf(fake));
-            System.out.println("<tr>");
-            System.out.println("<th>" + review.getRID() + "</th>");
-            System.out.println("<th>" + review.getTitle() + "</th>");
-            System.out.println("<th>" + review.getStars() + "</th>");
-            System.out.println("<th>" + critic.getName() + "</th>");
-            System.out.println("</tr>");
         }
     }
     //
@@ -134,7 +129,7 @@ public class ReviewsController {
         return Reviews;
     }
 
-    @GetMapping("/review{rid}")
+    @GetMapping("/reviews/{rid}")
     public ResponseEntity<Review> getReview(@PathVariable("rid") int rid) {
         Review fake = new Review();
         fake.setRID(rid);
@@ -145,7 +140,7 @@ public class ReviewsController {
         return new ResponseEntity(null, HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/review/{title}")
+    @GetMapping("/reviews/{title}")
     public ResponseEntity<ArrayList<Review>> getMovieReview(@PathVariable("title") String title) {
         ArrayList<Review> reviews = new ArrayList();
         for (Review r : Reviews) {
@@ -159,7 +154,7 @@ public class ReviewsController {
         return new ResponseEntity(reviews, HttpStatus.FOUND);
     }
 
-    @GetMapping("/review/Above3Stars")
+    @GetMapping("/reviews/Above3Stars")
     public ResponseEntity<ArrayList<Review>> getMovieMoreThanRating() {
         ArrayList<Review> reviews = new ArrayList();
         for (Review r : Reviews) {
@@ -216,7 +211,7 @@ public class ReviewsController {
         }
     }
 
-    @DeleteMapping("/review/{rid}")
+    @DeleteMapping("/reviews/{rid}")
     public ResponseEntity<Review> deleteReview(@PathVariable("rid") int rid) {
         Review fake = new Review();
         fake.setRID(rid);
