@@ -23,15 +23,6 @@ li a:hover {
     background-color: #111;
 }
 
-th {
-    border-bottom: 5px double #d9ad7c;
-}
-
-
-tr:nth-child(even) {
-    background-color: #d9ad7c;
-}
-
 h1 {
     color: #a2836e;
 }
@@ -41,9 +32,18 @@ body {
     color: #a2836e;
 }
 
-label{
-	cursor: default;
+input{
+    width: 200px;
     text-align: center;
+}
+
+select{
+    width: 210px;
+    text-align: center;
+}
+textarea{
+    width: 200px;
+    text-align: justify;
 }
 
 a{

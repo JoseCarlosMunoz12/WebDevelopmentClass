@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="site.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Add New Review</title>
+    <script type="text/javascript">
+        function validateForm() {
+            var error = false;
+            var message = "";
+
+            //rid field
+            var value = document.forms["form1"]["rid"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                message = message + "RID cannot be blank!";
+
+                document.getElementById("ridLabel").style = "color:red";
+                document.getElementById("ridLabel").innerHTML = "RID: (" + message + ")";
+                message = message + "\n";
+            } else {
+                if (isNaN(value)) {
+                    //RID is not a number
+                    error = true;
+                    message = message + "RID must be a number!";
+
+                    document.getElementById("ridLabel").style = "color:red";
+                    document.getElementById("ridLabel").innerHTML = "RID (" + message + "):";
+                    message = message + "\n";
+
+                }
+                else {
+                    // Check if the value is between the acceptable range
+                    var num = Number(value);
+                    if (num < 100 || num > 999) {
+                        error = true;
+                        message = message + "SID must be between 100 and 999";
+
+                        document.getElementById("ridLabel").style = "color:red";
+                        document.getElementById("ridLabel").innerHTML = "RID: (" + message + ")";
+                        message = message + "\n";
+                    }else{
+                    //revert back to original
+                    document.getElementById("ridLabel").style = "";
+                    document.getElementById("ridLabel").innerHTML = "SID:";
+                    }
+                }
+            }
+            //check the Title Value
+            value = document.forms["form1"]["title"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                message = message + "Title cannot be blank\n";
+                document.getElementById("titleLabel").style.color = "red";
+                document.getElementById("titleLabel").innerHTML = "Movie Title: (" + "Title cannot be blank)";
+            } else{
+                document.getElementById("titleLabel").style.color = "";
+                document.getElementById("titleLabel").innerHTML = "Movie Title:";
+            }
+            // Check to see if the body is not empty
+            value = document.forms["form1"]["body"].value;
+            console.log(value.length);
+            if (value == "" || value == null) {
+                error = true;
+                message = message + "Body cannot be blank\n";
+                document.getElementById("bodyLabel").style.color = "red";
+                document.getElementById("bodyLabel").innerHTML = "Body: (" + "Body cannot be blank)";
+            } else {
+                document.getElementById("bodyLabel").style.color = "";
+                document.getElementById("bodyLabel").innerHTML = "Body:";
+
+            }
+            //checks to see if the reviewer is not empty
+            value = document.forms["form1"]["reviewer"].value;
+            if ((value == null) || (value.length <= 0)) {
+                error = true;
+                message = message + "Reviewer cannot be blank\n";
+                document.getElementById("reviewerLabel").style.color = "red";
+                document.getElementById("reviewerLabel").innerHTML = "Reviewer: (" + "Reviewer cannot be blank)";
+            } else{
+                document.getElementById("reviewerLabel").style.color = "";
+                document.getElementById("reviewerLabel").innerHTML = "Reviewer:";
+            }
+
+            if (error) {
+                alert(message);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Add a New Review</h1>
+
+    <ul>
+        <li><a href="../index.html">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td><i class="material-icons">home</i></td>
+                        <td><span class="collapsible">Home</span></td>
+                    </tr>
+                </table>
+            </a></li>
+        <li><a class="active" href="addReview.html">
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td> <i class="material-symbols-outlined">
+                                add
+                            </i></td>
+                        <td><span class="collapsible">Add Review</span></td>
+                    </tr>
+                </table>
+            </a></li>
+
+    </ul>
+
+    <form action="addReview.html" method="GET" id="form1">
+        <table>
+            <tr>
+                <th>
+                    <label for="rid" id="ridLabel">RID:</label>
+                </th>
+                <th>
+                    <input type="text" id="rid" name="rid">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="title" id="titleLabel">Movie Title:</label>
+                </th>
+                <th>
+                    <input type="text" id="title" name="title">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="body" id="bodyLabel">Body:</label>
+                </th>
+                <th>
+                    <textarea style="height: 40px;"
+                     type="text" id="body"
+                      name="body"></textarea>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="stars">Stars:</label>
+                </th>
+                <th>
+                    <select id="stars" name="stars">
+                        <option value="5">&starf;&starf;&starf;&starf;&starf;</option>
+                        <option value="4">&starf;&starf;&starf;&starf;</option>
+                        <option value="3">&starf;&starf;&starf;</option>
+                        <option value="2">&starf;&starf;</option>
+                        <option value="1">&starf;</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="reviewer" id="reviewerLabel">Reviewer:</label>
+                </th>
+                <th>
+                    <input type="text" id="reviewer" name="reviewer">
+                </th>
+            </tr>
+        </table>
+        <input type="submit" onclick="return validateForm()" value="Add Student">
+        <input type="reset" value="Start Over?">
+    </form>
+</body>
+
+</html>
