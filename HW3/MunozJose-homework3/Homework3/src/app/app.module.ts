@@ -8,17 +8,26 @@ import { FormsModule } from '@angular/forms';
 import { ReviewerListComponent } from './reviewer-list/reviewer-list.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewsService } from './reviews.service';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { MaxvalDirective } from './maxval.directive';
+import { MinvalDirective } from './minval.directive';
+import { IntegervalDirective } from './integerval.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReviewerListComponent,
-    ReviewListComponent
+    ReviewListComponent,
+    AddReviewComponent,
+    MaxvalDirective,
+    MinvalDirective,
+    IntegervalDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ReviewsService],
   bootstrap: [AppComponent]

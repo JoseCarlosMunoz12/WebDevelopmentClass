@@ -1,0 +1,33 @@
+<h1>Add Student</h1>
+
+<form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
+    <table cellpadding=10 cellspacing=0 border=1>
+
+        <tr>
+            <td>RID
+                <span *ngIf="(ridAlreadyExists && rid.pristine && rid.untouched)"> (RID is already in use)</span>
+                <span *ngIf="(rid.invalid && rid.errors?.['required']) && (rid.dirty || rid.touched)"> (RID is required)</span>
+                <span *ngIf="(rid.invalid && !rid.errors?.['required'] && rid.errors?.['notint']) && (rid.dirty || rid.touched)"> (RID must be an integer)</span>
+                <span *ngIf="(rid.invalid && !rid.errors?.['required'] && !rid.errors?.['notint'] && (rid.errors?.['maxval'] || rid.errors?.['minval'])) && (rid.dirty || rid.touched)"> (Rid must be a 3 digit Integer)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="review.rid" required intval minval="100" maxval="999" name="rid" #rid="ngModel"></td>
+        </tr>
+        <tr>
+            <td>Movie Title<span *ngif="(title.invalid && title.errors?.['required']) && (title.dirty || title.touched)"> (A Movie Title is required)</span></td>
+            <td><input type="text" [(ngModel)]="review.title" required name="title" #title="ngModel"></td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+            <td>UID
+                <span *ngIf="(ridAlreadyExists && rid.pristine && rid.untouched)"> (RID is already in use)</span>
+                <span *ngIf="(rid.invalid && rid.errors?.['required']) && (rid.dirty || rid.touched)"> (RID is required)</span>
+                <span *ngIf="(rid.invalid && !rid.errors?.['required'] && rid.errors?.['notint']) && (rid.dirty || rid.touched)"> (RID must be an integer)</span>
+                <span *ngIf="(rid.invalid && !rid.errors?.['required'] && !rid.errors?.['notint'] && (rid.errors?.['maxval'] || rid.errors?.['minval'])) && (rid.dirty || rid.touched)"> (Rid must be a 3 digit Integer)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="review.uid" required intval minval="10000" maxval="99999" name="uid" #uid="ngModel"></td>            
+        </tr>
+    </table>
+</form>
+<p><a [routerLink]="['/studentlist']">Roster</a></p>

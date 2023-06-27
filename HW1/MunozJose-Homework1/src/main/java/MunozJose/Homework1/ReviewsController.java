@@ -231,7 +231,7 @@ public class ReviewsController {
         return Critics;
     }
 
-    @GetMapping("/reviewer{uid}")
+    @GetMapping("/reviewers/{uid}")
     public ResponseEntity<Reviewer> getReviewer(@PathVariable("uid") int uid) {
         Reviewer fake = new Reviewer();
         fake.setUID(uid);
@@ -267,7 +267,7 @@ public class ReviewsController {
         }        
     }
         
-    @DeleteMapping("/reviewer/{uid}")
+    @DeleteMapping("/reviewers/{uid}")
     public ResponseEntity<Reviewer> deleteReviewer(@PathVariable("uid") int uid) {
         Reviewer fake = new Reviewer();
         fake.setUID(uid);

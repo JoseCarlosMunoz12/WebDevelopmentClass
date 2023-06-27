@@ -8,6 +8,18 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Add New Review</title>
     <script type="text/javascript">
+		function resetForm(){
+		
+			document.getElementById("ridLabel").style = "";
+            document.getElementById("ridLabel").innerHTML = "RID:";
+			
+            document.getElementById("titleLabel").style.color = "";
+            document.getElementById("titleLabel").innerHTML = "Movie Title:";
+			
+            document.getElementById("reviewerLabel").style.color = "";
+			document.getElementById("reviewerLabel").innerHTML = "Reviewer:";
+			
+		}
         function validateForm() {
             var error = false;
             var message = "";
@@ -45,7 +57,7 @@
                     }else{
                     //revert back to original
                     document.getElementById("ridLabel").style = "";
-                    document.getElementById("ridLabel").innerHTML = "SID:";
+                    document.getElementById("ridLabel").innerHTML = "RID:";
                     }
                 }
             }
@@ -175,7 +187,7 @@
             </tr>
         </table>
         <input type="submit" onclick="return validateForm()" value="Add Student">
-        <input type="reset" value="Start Over?">
+        <input type="reset" onclick="resetForm()" value="Start Over?">
     </form>
 </body>
 

@@ -15,7 +15,8 @@ export class AddStudentComponent implements OnInit {
   student: Student = new Student();
   sidAlreadyExists:boolean = false;
 
-  constructor(private studentService: StudentService, private router: Router) { }
+  constructor(private studentService: StudentService, 
+    private router: Router) { }
 
   ngOnInit(): void {
   }
