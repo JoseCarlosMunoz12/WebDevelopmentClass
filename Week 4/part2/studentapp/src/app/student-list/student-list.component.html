@@ -1,4 +1,4 @@
-<h1>Student Roster</h1>
+<h1>Student Roster ({{username }})</h1>
 
 <table cellPadding="10" cellSpacing="0" border="1">
     <tr>
@@ -30,4 +30,5 @@
 
 <p>
     <a [routerLink]="['/addStudent']">Add Student</a>
+    <a (click)="logout()">Log Out</a>
 </p>

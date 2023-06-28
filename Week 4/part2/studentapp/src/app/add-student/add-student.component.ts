@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-add-student',
@@ -16,11 +17,14 @@ export class AddStudentComponent implements OnInit {
   sidAlreadyExists:boolean = false;
 
   constructor(private studentService: StudentService, 
-    private router: Router) { }
+    private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.userService.logout();
+  }
   onSubmit(form: NgForm): void {
     console.log(this.student);
 

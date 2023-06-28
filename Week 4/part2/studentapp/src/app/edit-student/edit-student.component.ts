@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-edit-student',
@@ -12,11 +13,10 @@ import { StudentService } from '../student.service';
 export class EditStudentComponent implements OnInit {
 
   student: Student = new Student();
-
   
   sid: number = -1;
   
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
 
   onSubmit(): void {
@@ -40,6 +40,10 @@ export class EditStudentComponent implements OnInit {
         
       }
     );
+  }
+
+  logout(){
+    this.userService.logout();
   }
   
   ngOnInit(): void {

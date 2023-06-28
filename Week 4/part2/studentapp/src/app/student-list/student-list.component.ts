@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { Student } from '../student';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-student-list',
@@ -10,14 +11,19 @@ import { Student } from '../student';
 export class StudentListComponent implements OnInit {
   //roster
   roster: Student[] = [];
-student: any;
+  student: any;
+  username:string = "";
   //constructor
-  constructor(private studentService: StudentService){}
+  constructor(private studentService: StudentService, private userService:UserService){}
   //init
   ngOnInit(): void {    
+    this.username = <string>sessionStorage.getItem("user");
+    console.log(this.username);
     this.updateListData();
   }
-
+  logout(){
+    this.userService.logout();
+  }
   //update list data
   updateListData(){
     this.studentService.getAllStudents().subscribe(data => {

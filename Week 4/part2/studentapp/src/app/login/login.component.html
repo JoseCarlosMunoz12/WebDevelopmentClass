@@ -1,0 +1,20 @@
+<h1>Login</h1>
+
+<form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
+    <table cellpadding=10 cellspacing=0 border=1>
+        <tr *ngIf="(loginFailure && (username.pristine || password.untouched))">
+            <td colspan="2">Username/Password Combination does not math our records</td>
+        </tr>
+        <tr>
+            <td>User<span *ngIf="(username.invalid && username.errors?.['required']) && (username.dirty || username.touched)"> (Username is required)</span>:
+                <td><input type="text" [(ngModel)]="user.username" required name="username" #username="ngModel"></td>
+        </tr>
+        <tr>
+            <td>Password<span *ngIf="(password.invalid && password.errors?.['required']) && (password.dirty || password.touched)"> (Password is required)</span>:
+                <td><input type="password" [(ngModel)]="user.password" required name="password" #password="ngModel"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add Student" [disabled]="!myform.form.valid"><input type="reset"></td>
+        </tr>
+    </table>
+</form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-student-detail',
@@ -20,8 +21,11 @@ export class StudentDetailComponent implements OnInit {
 
   student: Student;
 
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
+  logout(){
+    this.userService.logout();
+  }
   ngOnInit(): void {
     //get this sid
     if (this.route.snapshot.paramMap.get('sid') !== null) {

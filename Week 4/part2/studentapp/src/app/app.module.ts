@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { MaxvalDirective } from './maxval.directive';
 import { MinvalDirective } from './minval.directive';
 import { IntegervalDirective } from './integerval.directive';
+import { UserService } from './user.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { IntegervalDirective } from './integerval.directive';
     EditStudentComponent,
     MaxvalDirective,
     MinvalDirective,
-    IntegervalDirective
+    IntegervalDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { IntegervalDirective } from './integerval.directive';
     HttpClientModule,
     FormsModule
   ],
-  providers: [StudentService],
+  providers: [StudentService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
