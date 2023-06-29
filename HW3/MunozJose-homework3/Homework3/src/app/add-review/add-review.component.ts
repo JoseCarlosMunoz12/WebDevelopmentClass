@@ -15,8 +15,8 @@ export class AddReviewComponent implements OnInit {
   review: Review = new Review();
   reviewers: Reviewer[] = [];
   ridAlreadyExists: Boolean = false;
-  uidExists: boolean = true;
-  constructor(private reviewService: ReviewsService, private reviewerService: ReviewerService, private router: Router) { }
+  constructor(private reviewService: ReviewsService,
+     private reviewerService: ReviewerService, private router: Router) { }
 
   ngOnInit(): void {
     this.reviewerService.getAllReviewers().subscribe(data =>{
@@ -25,7 +25,6 @@ export class AddReviewComponent implements OnInit {
   }
   onSubmit(form: NgForm): void {
     console.log(this.review);
-    this.uidExists = false;
     this.reviewService.createReview(this.review).subscribe(data => {
       this.ridAlreadyExists = false;
       this.router.navigate(['/reviewlist']);

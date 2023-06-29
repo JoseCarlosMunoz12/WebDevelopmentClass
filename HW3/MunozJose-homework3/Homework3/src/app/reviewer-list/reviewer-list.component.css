@@ -22,3 +22,17 @@ li a {
 li a:hover {
     background-color: #111;
 }
+th {
+    border-bottom: 5px double #d9ad7c;
+}
+
+td{
+    color: #fff2df;
+}
+tr:nth-child(even) {
+    background-color: #d9ad7c;
+}
+
+a{
+    color: #fff2df;
+}

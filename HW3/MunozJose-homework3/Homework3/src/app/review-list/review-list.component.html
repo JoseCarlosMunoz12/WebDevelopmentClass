@@ -25,9 +25,9 @@
     <tr>
 
         <th><a (click)="sortBy('rid')">RID</a></th>
-        <th><a (click)="sortBy('name')">Title</a></th>
-        <th><a (click)="sortBy('major')">Stars</a></th>
-        <th><a (click)="sortBy('major')">UID</a></th>
+        <th><a (click)="sortBy('title')">Title</a></th>
+        <th><a (click)="sortBy('stars')">Stars</a></th>
+        <th><a (click)="sortBy('uid')">UID</a></th>
         <th>Action?</th>
     </tr>
     <tr *ngFor="let review of reviews">
@@ -35,7 +35,7 @@
         <td><a [routerLink]="['/reviews/',review.rid]">{{review.rid}}</a></td>
         <td>{{review.title}}</td>
         <td>{{review.stars}}</td>
-        <td>{{review.uid}}</td>
+        <td><a [routerLink]="['/reviewers/', review.uid]">{{review.uid}}</a></td>
         <td><a [routerLink]="['/editReview/',review.rid]"><i class="material-icons">edit</i></a>
             <a (click)="deleteStudent(review.rid)"><i class="material-icons">delete</i></a>
         </td>

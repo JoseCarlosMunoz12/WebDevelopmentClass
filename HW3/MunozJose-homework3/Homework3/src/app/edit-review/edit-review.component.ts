@@ -18,7 +18,7 @@ export class EditReviewComponent implements OnInit {
   
 
   constructor(private reviewService: ReviewsService, 
-    private reviewerService: ReviewerService, private router: Router, private route: ActivatedRoute,) { }
+    private reviewerService: ReviewerService, private router: Router, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class EditReviewComponent implements OnInit {
         error => {
           if (error.status = '404') {
             console.error("student doesn't exist");
-            this.router.navigateByUrl('studentlist');
+            this.router.navigateByUrl('reviewlist');
           } else {
 
           
@@ -52,7 +52,7 @@ export class EditReviewComponent implements OnInit {
 
     } else {
       //sid wasn't present, so bug out
-      this.router.navigateByUrl('studentlist');
+      this.router.navigateByUrl('reviewerlist');
       
     } 
     this.reviewerService.getAllReviewers().subscribe(data =>{

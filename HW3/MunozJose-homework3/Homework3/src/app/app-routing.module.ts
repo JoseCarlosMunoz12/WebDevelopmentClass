@@ -7,6 +7,7 @@ import { ReviewDetailComponent } from './review-detail/review-detail.component';
 import { EditReviewComponent } from './edit-review/edit-review.component';
 import { AddReviewerComponent } from './add-reviewer/add-reviewer.component';
 import { EditReviewerComponent } from './edit-reviewer/edit-reviewer.component';
+import { ReviewerDetailComponent } from './reviewer-detail/reviewer-detail.component';
 
 const routes: Routes = [
   { path:'reviewlist',component:ReviewListComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path:'addReview', component:AddReviewComponent},
   { path:'editReview/:rid', component:EditReviewComponent},
   { path: "reviews/:rid",component:ReviewDetailComponent},
-  { path: "reviewers/:uid", component:ReviewerListComponent},
+  { path: "reviewers/:uid", component:ReviewerDetailComponent},
   { path: "addReviewer", component:AddReviewerComponent},
   { path: "editReviewer/:uid", component:EditReviewerComponent},
   { path:'',redirectTo: 'reviewlist', pathMatch:'full'}

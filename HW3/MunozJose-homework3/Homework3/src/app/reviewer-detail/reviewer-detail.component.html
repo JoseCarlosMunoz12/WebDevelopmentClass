@@ -1,1 +1,21 @@
-<p>reviewer-detail works!</p>
+<h1>Review ID: {{reviewer.uid}}</h1>
+
+<table cellPadding="10" cellSpacing="0" border="1">
+    <tr>
+        <td>UID:</td>
+        <td>{{reviewer.uid}}</td>
+    </tr> 
+    
+    <tr>
+        <td>Name:</td>
+        <td>{{reviewer.name}}</td>
+    </tr> 
+    <tr>
+        <td>Biography:</td>
+        <td>{{reviewer.bio}}</td>
+    </tr> 
+</table>
+
+<p>
+    <a [routerLink]="['/reviewerlist']">All Reviewers</a>
+</p>

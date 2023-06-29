@@ -24,18 +24,17 @@
 <table cellPadding="10" cellSpacing="0" border="1">
     <tr>
 
-        <th><a (click)="sortBy('rid')">UID</a></th>
-        <th><a (click)="sortBy('name')">Title</a></th>
-        <th><a (click)="sortBy('major')">Stars</a></th>
+        <th><a (click)="sortBy('uid')">UID</a></th>
+        <th><a (click)="sortBy('name')">Critic</a></th>
+        <th>Biography</th>
         <th>Action?</th>
     </tr>
     <tr *ngFor="let review of reviewers">
 
-        <td><a [routerLink]="['/reviews/',review.uid]">{{review.uid}}</a></td>
+        <td><a [routerLink]="['/reviewers/',review.uid]">{{review.uid}}</a></td>
         <td>{{review.name}}</td>
         <td>{{review.bio}}</td>
-        <td><a [routerLink]="['/editReview/',review.uid]"><i class="material-icons">edit</i></a>
-            <a (click)="deleteStudent(review.uid)"><i class="material-icons">delete</i></a>
+        <td><a [routerLink]="['/editReviewer/',review.uid]"><i class="material-icons">edit</i></a>
         </td>
     </tr>
 </table>

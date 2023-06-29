@@ -1,1 +1,38 @@
-<p>add-reviewer works!</p>
+<h1>Add Review</h1>
+
+<form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
+    <table cellpadding=10 cellspacing=0 border=1>
+
+        <tr>
+            <td>RID
+                <span *ngIf="(uidAlreadeyExists && uid.pristine && uid.untouched)"> (UID is already in use)</span>
+                <span *ngIf="(uid.invalid && uid.errors?.['required']) && (uid.dirty || uid.touched)"> (UID is
+                    required)</span>
+                <span
+                    *ngIf="(uid.invalid && !uid.errors?.['required'] && uid.errors?.['notint']) && (uid.dirty || uid.touched)">
+                    (UID must be an integer)</span>
+                <span
+                    *ngIf="(uid.invalid && !uid.errors?.['required'] && !uid.errors?.['notint'] && (uid.errors?.['maxval'] || uid.errors?.['minval'])) && (uid.dirty || uid.touched)">
+                    (Uid must be a 5 digit Integer)</span>:
+            </td>
+            <td><input type="number" [(ngModel)]="reviewer.uid" required intval minval="10000" maxval="99999" name="uid" #uid="ngModel"></td>
+        </tr>
+        
+        <tr>
+            <td>Reviwer Name<span *ngIf="(name.invalid && name.errors?.['required']) && (name.dirty || name.touched)">(A Reviewer name is required)</span>:</td>
+            <td><input type="text" [(ngModel)]="reviewer.name" required name="name" #name="ngModel"></td>
+        </tr>
+        
+        <tr>
+            <td>Biography<span *ngIf="(bio.invalid && bio.errors?.['required']) && (bio.dirty || bio.touched)"> (A
+                    Biography is required)</span></td>
+            <td><input style="height:120px; width:200px;" type="text" [(ngModel)]="reviewer.bio" required name="body"
+                    #bio="ngModel"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add Reviewer" [disabled]="!myform.form.valid"><input
+                    type="reset"></td>
+        </tr>
+    </table>
+</form>
+<p><a [routerLink]="['/reviewerlist']">All Reviewers</a></p>
