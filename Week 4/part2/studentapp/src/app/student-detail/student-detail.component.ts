@@ -21,7 +21,9 @@ export class StudentDetailComponent implements OnInit {
 
   student: Student;
 
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private studentService: StudentService, 
+    private router: Router,
+     private route: ActivatedRoute, private userService: UserService) { }
 
   logout(){
     this.userService.logout();

@@ -9,13 +9,12 @@ import { Review } from '../review';
 })
 export class ReviewListComponent implements OnInit {
   reviews : Review[] = [];
-  review: any;
   constructor(private reviewService:ReviewsService){}
   ngOnInit(): void {
     this.updateListData();
   }
   updateListData(){
-    this.reviewService.getAllReviews().subscribe(data =>{
+    this.reviewService.getAllReviews().subscribe(data => {
       this.reviews = data;
     } ,
     error => {
@@ -27,5 +26,17 @@ export class ReviewListComponent implements OnInit {
     });
   }
   sortBy(field: string){
+  }
+  deleteStudent(rid:number){
+  this.reviewService.deleteReview(rid).subscribe(data =>{
+      this.updateListData();
+    },    error => {
+      console.error("Error");
+      console.error("Error" + error.message);
+      console.error("ErrorStatus: " + error.status);
+      console.error("ErrorName" + error.name);
+      console.error("");
+    });
+    this.reviews = this.reviews.filter(m =>m.rid !== rid);
   }
 }

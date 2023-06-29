@@ -12,6 +12,12 @@ import { AddReviewComponent } from './add-review/add-review.component';
 import { MaxvalDirective } from './maxval.directive';
 import { MinvalDirective } from './minval.directive';
 import { IntegervalDirective } from './integerval.directive';
+import { ReviewDetailComponent } from './review-detail/review-detail.component';
+import { EditReviewComponent } from './edit-review/edit-review.component';
+import { ReviewerService } from './reviewer.service';
+import { ReviewerDetailComponent } from './reviewer-detail/reviewer-detail.component';
+import { EditReviewerComponent } from './edit-reviewer/edit-reviewer.component';
+import { AddReviewerComponent } from './add-reviewer/add-reviewer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import { IntegervalDirective } from './integerval.directive';
     AddReviewComponent,
     MaxvalDirective,
     MinvalDirective,
-    IntegervalDirective
+    IntegervalDirective,
+    ReviewDetailComponent,
+    EditReviewComponent,
+    ReviewerDetailComponent,
+    EditReviewerComponent,
+    AddReviewerComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,7 @@ import { IntegervalDirective } from './integerval.directive';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ReviewsService],
+  providers: [ReviewsService, ReviewerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

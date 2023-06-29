@@ -16,16 +16,16 @@ public class Reviewer {
 
     @Min(value = 10000, message = "SID must be a 5 digit value")
     @Max(value = 99999, message = "SID must be a 5 digit value")
-    private int UID;
+    private int uid;
     @NotBlank(message = "Name cannot be blank")
-    private String Name;
+    private String name;
     @NotBlank(message = "Biography cannot be blank")
-    private String Bio;
+    private String bio;
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.UID;
+        hash = 89 * hash + this.uid;
         return hash;
     }
 
@@ -41,30 +41,30 @@ public class Reviewer {
             return false;
         }
         final Reviewer other = (Reviewer) obj;
-        return this.UID == other.UID;
+        return this.uid == other.uid;
     }
 
     public int getUID() {
-        return UID;
+        return uid;
     }
 
     public void setUID(int UID) {
-        this.UID = UID;
+        this.uid = UID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
 
     public String getBio() {
-        return Bio;
+        return bio;
     }
 
     public void setBio(String Bio) {
-        this.Bio = Bio;
+        this.bio = Bio;
     }
 }

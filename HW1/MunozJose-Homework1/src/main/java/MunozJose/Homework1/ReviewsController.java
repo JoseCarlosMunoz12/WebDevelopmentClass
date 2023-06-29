@@ -79,7 +79,6 @@ public class ReviewsController {
             Reviews.add(review);
             Reviewer fake = new Reviewer();
             fake.setUID(review.getUID());
-            var critic = Critics.get(Critics.indexOf(fake));
         }
     }
     //
@@ -129,7 +128,7 @@ public class ReviewsController {
         return Reviews;
     }
 
-    @GetMapping("/reviews/{rid}")
+    @GetMapping("/review/{rid}")
     public ResponseEntity<Review> getReview(@PathVariable("rid") int rid) {
         Review fake = new Review();
         fake.setRID(rid);

@@ -1,26 +1,48 @@
 <h1>Movie Reviews</h1>
 
+<ul>
+    <li><a >
+            <table border=0 cellpadding=0 cellspacing=0>
+                <tr>
+                    <td><i class="material-icons">home</i></td>
+                    <td><span class="collapsible">All Reviews</span></td>
+                </tr>
+            </table>
+        </a></li>
+    <li><a [routerLink]="['/reviewerlist']" >
+            <table border=0 cellpadding=0 cellspacing=0>
+                <tr>
+                    <td> <i class="material-symbols-outlined">
+                            add
+                        </i></td>
+                    <td><span class="collapsible">All Reviewers</span></td>
+                </tr>
+            </table>
+        </a></li>
+
+</ul>
 <table cellPadding="10" cellSpacing="0" border="1">
     <tr>
-        
-        <th><a (click)="sortBy('sid')">RID</a></th>
+
+        <th><a (click)="sortBy('rid')">RID</a></th>
         <th><a (click)="sortBy('name')">Title</a></th>
         <th><a (click)="sortBy('major')">Stars</a></th>
         <th><a (click)="sortBy('major')">UID</a></th>
         <th>Action?</th>
     </tr>
-    <tr *ngFor="let review of reviews">  
+    <tr *ngFor="let review of reviews">
 
-        <td>{{ review.rid }}</td>
-        <td>{{ review.title }}</td>
-        <td>{{ review.stars }}</td>
+        <td><a [routerLink]="['/reviews/',review.rid]">{{review.rid}}</a></td>
+        <td>{{review.title}}</td>
+        <td>{{review.stars}}</td>
         <td>{{review.uid}}</td>
-        <td><a ><i class="material-icons">edit</i></a>
-            <a><i class="material-icons">delete</i></a></td>
+        <td><a [routerLink]="['/editReview/',review.rid]"><i class="material-icons">edit</i></a>
+            <a (click)="deleteStudent(review.rid)"><i class="material-icons">delete</i></a>
+        </td>
     </tr>
 </table>
 
 
 <p>
-    <a [routerLink]="['/addstudent']">Add Student</a>
+    <a [routerLink]="['/addReview']">Add Student</a>
 </p>
