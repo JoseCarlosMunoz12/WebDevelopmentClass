@@ -1,5 +1,16 @@
 <h1>Add Review</h1>
 
+<ul>
+    <li><a [routerLink]="['/reviewerlist']" >
+            <table border=0 cellpadding=0 cellspacing=0>
+                <tr>
+                    <i class="material-symbols-outlined">groups</i>
+                    <td><span class="collapsible">All Reviewers</span></td>
+                </tr>
+            </table>
+        </a></li>
+
+</ul>
 <form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
     <table cellpadding=10 cellspacing=0 border=1>
 
@@ -26,8 +37,8 @@
         <tr>
             <td>Biography<span *ngIf="(bio.invalid && bio.errors?.['required']) && (bio.dirty || bio.touched)"> (A
                     Biography is required)</span></td>
-            <td><input style="height:120px; width:200px;" type="text" [(ngModel)]="reviewer.bio" required name="body"
-                    #bio="ngModel"></td>
+            <td><textarea style="height:120px; width:200px; word-wrap: break-word;" type="text" [(ngModel)]="reviewer.bio" required name="body"
+                    #bio="ngModel"></textarea></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Add Reviewer" [disabled]="!myform.form.valid"><input
@@ -35,4 +46,3 @@
         </tr>
     </table>
 </form>
-<p><a [routerLink]="['/reviewerlist']">All Reviewers</a></p>

@@ -19,6 +19,7 @@ export class AddReviewComponent implements OnInit {
      private reviewerService: ReviewerService, private router: Router) { }
 
   ngOnInit(): void {
+    this.review.stars = 2.5;
     this.reviewerService.getAllReviewers().subscribe(data =>{
       this.reviewers = data;
     })

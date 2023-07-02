@@ -28,8 +28,8 @@
         <tr>
             <td>Biography<span *ngIf="(bio.invalid && bio.errors?.['required']) && (bio.dirty || bio.touched)"> (A
                     Biography is required)</span></td>
-            <td><input style="height:120px; width:200px;" type="text" [(ngModel)]="reviewer.bio" required name="body"
-                    #bio="ngModel"></td>
+            <td><textarea style="height:120px; width:200px;" type="text" [(ngModel)]="reviewer.bio" required name="body"
+                    #bio="ngModel"></textarea> </td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Commit Changes" [disabled]="!myform.form.valid">

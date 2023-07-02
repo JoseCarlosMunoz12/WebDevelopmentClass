@@ -43,8 +43,8 @@
         <tr>
             <td>Body Review<span *ngIf="(body.invalid && body.errors?.['required']) && (body.dirty || body.touched)"> (A
                     Body is required)</span></td>
-            <td><input style="height:120px; width:200px;" type="text" [(ngModel)]="review.body" required name="body"
-                    #body="ngModel"></td>
+            <td><textarea style="height:120px; width:200px;" type="text" [(ngModel)]="review.body" required name="body"
+                    #body="ngModel">></textarea></td>
         </tr>
         <tr>
             <td>Reviewer
