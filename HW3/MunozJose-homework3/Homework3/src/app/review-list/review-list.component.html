@@ -4,7 +4,7 @@
     <li><a >
             <table border=0 cellpadding=0 cellspacing=0>
                 <tr>
-                    <td><i class="material-icons">home</i></td>
+                    <i class="material-symbols-outlined">event_list</i>
                     <td><span class="collapsible">All Reviews</span></td>
                 </tr>
             </table>
@@ -12,13 +12,19 @@
     <li><a [routerLink]="['/reviewerlist']" >
             <table border=0 cellpadding=0 cellspacing=0>
                 <tr>
-                    <td> <i class="material-symbols-outlined">
-                            add
-                        </i></td>
+                    <i class="material-symbols-outlined">groups</i>
                     <td><span class="collapsible">All Reviewers</span></td>
                 </tr>
             </table>
         </a></li>
+        <li><a [routerLink]="['/addReview']" >
+                <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                        <i class="material-symbols-outlined">add</i>
+                        <td><span class="collapsible">Add Review</span></td>
+                    </tr>
+                </table>
+            </a></li>
 
 </ul>
 <table cellPadding="10" cellSpacing="0" border="1">
@@ -28,7 +34,7 @@
         <th><a (click)="sortBy('title')">Title</a></th>
         <th><a (click)="sortBy('stars')">Stars</a></th>
         <th><a (click)="sortBy('uid')">UID</a></th>
-        <th>Action?</th>
+        <th><a>Action?</a></th>
     </tr>
     <tr *ngFor="let review of reviews">
 
@@ -44,5 +50,7 @@
 
 
 <p>
-    <a [routerLink]="['/addReview']">Add Student</a>
+    <a [routerLink]="['/addReview']">
+        <i class="material-symbols-outlined">add</i>
+        Add Review</a>
 </p>

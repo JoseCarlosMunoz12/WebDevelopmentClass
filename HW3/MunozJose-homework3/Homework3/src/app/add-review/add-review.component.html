@@ -1,5 +1,17 @@
 <h1>Add Review</h1>
 
+
+<ul>
+    <li><a [routerLink]="['/reviewlist']">
+            <table border=0 cellpadding=0 cellspacing=0>
+                <tr>
+                    <i class="material-symbols-outlined">event_list</i>
+                    <td><span class="collapsible">All Reviews</span></td>
+                </tr>
+            </table>
+        </a></li>
+</ul>
+
 <form (ngSubmit)="onSubmit(myform)" novalidate #myform="ngForm">
     <table cellpadding=10 cellspacing=0 border=1>
 
@@ -51,4 +63,3 @@
         </tr>
     </table>
 </form>
-<p><a [routerLink]="['/reviewlist']">Roster</a></p>
